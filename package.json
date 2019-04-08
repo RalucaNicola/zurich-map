@@ -1,0 +1,28 @@
+{
+  "name": "zurich-map",
+  "version": "1.0.0",
+  "description": "3D map of Zurich",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "dev": "tsc -w & sass --watch src/css:src/css",
+    "lint": "tslint './src/*.ts'"
+  },
+  "keywords": [
+    "esri",
+    "typescript"
+  ],
+  "author": "Raluca Nicola <ralucagnicola@gmail.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "tslint": "4.2.0"
+  },
+  "dependencies": {
+    "@types/arcgis-js-api": "4.10.0",
+    "@types/dojo": "1.9.41",
+    "sass": "1.17.0",
+    "typescript": "3.3"
+  }
+}
