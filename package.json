@@ -7,7 +7,7 @@
     "url": ""
   },
   "scripts": {
-    "dev": "tsc -w & sass --watch src/css:src/css",
+    "dev": "sass --watch src/css:src/css | tsc -w",
     "lint": "tslint './src/*.ts'"
   },
   "keywords": [
