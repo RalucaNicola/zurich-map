@@ -14,6 +14,10 @@ body {
   background-image: url("../assets/custom-background.jpg");
 }
 
+canvas {
+  opacity: 0.9;
+}
+
 .menu {
   position: absolute;
   top: 0;
@@ -109,7 +113,7 @@ button:hover {
   max-width: 700px;
   padding: 20px;
   color: #423c3c;
-  border-left: 3px solid #d54e2f;
+  border-left: 3px solid #423c3c;
 }
 .swiper-container .swiper-wrapper {
   padding: 2em 0px;
@@ -128,12 +132,12 @@ button:hover {
   filter: grayscale(1);
 }
 
-#indicator {
+#callout {
   display: none;
   position: absolute;
   width: 60px;
   height: 0;
-  border-top: 3px solid #d54e2f;
+  border-top: 3px solid #423c3c;
 }
 
 #marker {
@@ -141,7 +145,7 @@ button:hover {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 5px dashed #d54e2f;
+  border: 5px dashed #423c3c;
   background-color: rgba(255, 255, 255, 0.5);
 }
 

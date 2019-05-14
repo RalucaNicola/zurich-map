@@ -20,6 +20,9 @@ body,
 body {
   background-image: url("../assets/custom-background.jpg");
 }
+canvas {
+  opacity: 0.9;
+}
 
 .menu {
   position: absolute;
@@ -125,7 +128,7 @@ button {
   max-width: 700px;
   padding: 20px;
   color: $text-color;
-  border-left: 3px solid $highlight-color;
+  border-left: 3px solid $text-color;
   .swiper-wrapper {
     padding: 2em 0px;
     .swiper-slide {
@@ -144,12 +147,12 @@ button {
   }
 }
 
-#indicator {
+#callout {
   display: none;
   position: absolute;
   width: 60px;
   height: 0;
-  border-top: 3px solid $highlight-color;
+  border-top: 3px solid $text-color;
 }
 
 #marker {
@@ -157,6 +160,6 @@ button {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 5px dashed $highlight-color;
+  border: 5px dashed $text-color;
   background-color: rgba(255, 255, 255, 0.5);
 }
