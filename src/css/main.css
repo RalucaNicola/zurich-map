@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Slabo+27px");
 html,
 body,
 #view {
@@ -5,10 +6,137 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
 }
 
 body {
-  background-image: url("../assets/background.jpg");
+  background-image: url("../assets/custom-background.jpg");
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  transition: width 2s;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.menu .menu-title {
+  margin: 2em 0;
+  font-size: 3em;
+  font-family: "Slabo 27px", serif;
+  text-align: center;
+}
+
+#title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  font-family: "Slabo 27px", serif;
+  margin: 0 1em;
+  font-size: 1.5em;
+}
+
+.intro {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.5em;
+  text-align: center;
+}
+.intro .front-image {
+  max-width: 200px;
+  box-shadow: 5px 5px 10px #646464;
+}
+.intro #image-left {
+  transform: rotate(-10deg);
+}
+.intro #image-right {
+  transform: rotate(10deg);
+}
+.intro .intro-impressum {
+  font-size: 0.6em;
+  font-style: italic;
+  margin-top: 5em;
+}
+.intro button {
+  margin: 4em;
+}
+
+.main {
+  display: none;
+  opacity: 0;
+  font-size: 1.2em;
+}
+.main button {
+  margin: 4em 0;
+}
+
+.opacity-transition {
+  transition: opacity 2s linear;
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid black;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-radius: 4px;
+  padding: 0.8em;
+  transition: background-color 0.2s;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.swiper-container {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  padding: 20px;
+  border-left: 3px solid black;
+}
+.swiper-container .swiper-wrapper {
+  padding: 2em 0px;
+}
+.swiper-container .swiper-wrapper .swiper-slide {
+  text-align: center;
+}
+.swiper-container .swiper-wrapper .swiper-slide img {
+  max-height: 100%;
+}
+.swiper-container .swiper-wrapper .subtitle {
+  font-size: 1.5em;
+}
+.swiper-container .swiper-pagination {
+  filter: grayscale(1);
+}
+
+#indicator {
+  display: none;
+  position: absolute;
+  width: 60px;
+  height: 0;
+  border-top: 3px solid black;
+}
+
+#marker {
+  display: none;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 5px dashed black;
 }
 
 /*# sourceMappingURL=main.css.map */

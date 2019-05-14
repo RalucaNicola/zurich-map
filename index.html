@@ -1,25 +1,56 @@
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>Zurich map</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
-    <link rel="stylesheet" href="./src/css/main.css">
-    <script>
-      var locationPath = location.pathname.replace(/\/[^\/]+$/, "/");
-      window.dojoConfig = {
-        packages: [
-          {
-            name: "app",
-            location: locationPath + "src/js/"
-          }
-        ]
-      };
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1" />
+  <title>Old Zurich in Photos</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <script>
+    var locationPath = location.pathname.replace(/\/[^\/]+$/, "/");
+    window.dojoConfig = {
+      packages: [{
+        name: "app",
+        location: locationPath + "src/js/"
+      }]
+    };
+
     </script>
-    <script src="https://js.arcgis.com/4.10/"></script>
-  </head>
-  <body>
-    <div id="view"></div>
-    <script>require(["app/main"]);</script>
-  </body>
+  <script src="https://js.arcgis.com/4.11/"></script>
+  <link rel="stylesheet" href="./src/css/main.css">
+</head>
+
+<body>
+  <div id="view"></div>
+  <div id="title">
+    <h1>Old Zurich in Photos</h1>
+  </div>
+  <div class="menu">
+    <div class="intro opacity-transition">
+      <h1 class="menu-title">Old Zurich in Photos</h1>
+      <div class="intro-description">
+        <p>Explore images of old Zurich on a 3D map of the city.</p>
+      </div>
+      <div>
+        <img class="front-image" id="image-left" src="./src/assets/front-cover.jpg">
+        <img class="front-image" id="image-right" src="./src/assets/front-cover-2.jpg">
+      </div>
+      <button id="explore-btn">Explore map</button>
+      <div class="intro-impressum">Map made with buildings from Open data
+        Zurich and a vector tile basemap from Esri.
+      </div>
+    </div>
+  </div>
+  <div id="marker"></div>
+  <div id="indicator"></div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <script>
+    require(["app/main"]);
+  </script>
+</body>
+
 </html>
