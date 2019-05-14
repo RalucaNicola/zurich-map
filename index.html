@@ -1,56 +1,79 @@
 <html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="initial-scale=1" />
-  <title>Old Zurich in Photos</title>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-  <script>
-    var locationPath = location.pathname.replace(/\/[^\/]+$/, "/");
-    window.dojoConfig = {
-      packages: [{
-        name: "app",
-        location: locationPath + "src/js/"
-      }]
-    };
-
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    <title>Old Zurich in Photos</title>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.11/esri/css/main.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script>
+      var locationPath = location.pathname.replace(/\/[^\/]+$/, "/");
+      window.dojoConfig = {
+        packages: [
+          {
+            name: "app",
+            location: locationPath + "src/js/"
+          }
+        ]
+      };
     </script>
-  <script src="https://js.arcgis.com/4.11/"></script>
-  <link rel="stylesheet" href="./src/css/main.css">
-</head>
+    <script src="https://js.arcgis.com/4.11/"></script>
+    <link rel="stylesheet" href="./src/css/main.css" />
+  </head>
 
-<body>
-  <div id="view"></div>
-  <div id="title">
-    <h1>Old Zurich in Photos</h1>
-  </div>
-  <div class="menu">
-    <div class="intro opacity-transition">
-      <h1 class="menu-title">Old Zurich in Photos</h1>
-      <div class="intro-description">
-        <p>Explore images of old Zurich on a 3D map of the city.</p>
-      </div>
-      <div>
-        <img class="front-image" id="image-left" src="./src/assets/front-cover.jpg">
-        <img class="front-image" id="image-right" src="./src/assets/front-cover-2.jpg">
-      </div>
-      <button id="explore-btn">Explore map</button>
-      <div class="intro-impressum">Map made with buildings from Open data
-        Zurich and a vector tile basemap from Esri.
+  <body>
+    <div id="view"></div>
+    <div id="title" class="opacity-transition">
+      <h1>Old Zurich in Photos</h1>
+    </div>
+    <div class="menu">
+      <div class="intro opacity-transition">
+        <h1 class="menu-title">Old Zurich in Photos</h1>
+        <div class="intro-description">
+
+          <div>
+            <img
+              class="front-image"
+              id="image-left"
+              src="./src/assets/front-cover.jpg"
+            />
+            <img
+              class="front-image"
+              id="image-right"
+              src="./src/assets/front-cover-2.jpg"
+            />
+          </div>
+          <p>
+            Explore images of old Zurich on a 3D map of the city.
+            The georeferenced, digitized images are part of
+            <a href="http://ethorama.library.ethz.ch">ETH Library Archive</a> and
+            they stem from the <a href="https://www.e-pics.ethz.ch/en/home_en/">E-Pics</a> platform.
+            The images are released under
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+            The map uses building data from <a href="https://data.stadt-zuerich.ch/dataset/geo_3d_dachmodell_lod2">Open Data Zurich</a>,
+            processed and published with <a href="https://pro.arcgis.com/en/pro-app/">ArcGIS Pro</a>.
+            Application built with <a href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a>.
+            The code is public on <a href="https://github.com/RalucaNicola/zurich-map">GitHub</a>.
+          </p>
+        </div>
+
+        <button id="explore-btn">Explore map</button>
       </div>
     </div>
-  </div>
-  <div id="marker"></div>
-  <div id="indicator"></div>
-  <div class="swiper-container">
-    <div class="swiper-wrapper"></div>
-    <div class="swiper-pagination"></div>
-  </div>
-  <script>
+    <div id="marker"></div>
+    <div id="indicator"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <script>
     require(["app/main"]);
   </script>
-</body>
-
+  </body>
 </html>

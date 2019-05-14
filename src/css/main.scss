@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
-$text-color: #222;
-$background-color: #fff;
-$font-regular: 'Roboto', sans-serif;
-$font-title: 'Slabo 27px', serif;
-$font-size: 14px;
+$text-color: #423c3c;
+$background-color: rgba(255, 255, 255, 0.95);
+$font-regular: 'Merriweather', sans-serif;
+$font-size-large: 1.2em;
+$highlight-color: #d54e2f;
 
 html,
 body,
@@ -14,7 +14,7 @@ body,
   height: 100%;
   width: 100%;
   font-family: $font-regular;
-  font-size: $font-size;
+  color: $text-color;
 }
 
 body {
@@ -31,11 +31,10 @@ body {
   transition: width 2s;
   background-color: $background-color;
   box-sizing: border-box;
-
+  font-size: $font-size-large;
   .menu-title {
     margin: 2em 0;
-    font-size: 3em;
-    font-family: $font-title;
+    font-weight: 700;
     text-align: center;
   }
 }
@@ -45,19 +44,17 @@ body {
   top: 0;
   left: 0;
   cursor: pointer;
-  font-family: $font-title;
   margin: 0 1em;
-  font-size: 1.5em;
+  opacity: 0;
 }
 
 .intro {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  font-size: 1.5em;
   text-align: center;
 
   .front-image {
-    max-width: 200px;
+    max-width: 300px;
     box-shadow: 5px 5px 10px rgb(100, 100, 100);
   }
 
@@ -69,24 +66,22 @@ body {
     transform: rotate(10deg);
   }
 
-  .intro-impressum {
-    font-size: 0.6em;
-    font-style: italic;
-    margin-top: 5em;
+  button {
+    margin-top: 2em;
   }
 
-  button {
-    margin: 4em;
+  p {
+    line-height: 1.7em;
+    margin-top: 4em;
   }
-}
 
-.main {
-  display: none;
-  opacity: 0;
-  font-size: 1.2em;
+  a {
+    color: $highlight-color;
+    text-decoration: none;
+  }
 
-  button {
-    margin: 4em 0;
+  a:hover {
+    animation: change-color 2s infinite;
   }
 }
 
@@ -94,19 +89,28 @@ body {
   transition: opacity 2s linear;
 }
 
+@keyframes change-color {
+  0%, 100% {
+    color: $highlight-color;
+  }
+  50% {
+    color: $text-color;
+  }
+ }
+
 button {
   background-color: transparent;
-  border: 1px solid black;
+  border: 1px solid $text-color;
   font-family: $font-regular;
+  font-size: inherit;
   text-transform: uppercase;
   cursor: pointer;
-  font-size: 0.9em;
   border-radius: 4px;
   padding: 0.8em;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: black;
+    background-color: $text-color;
     color: white;
   }
 }
@@ -117,10 +121,11 @@ button {
   right: 20px;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $background-color;
   max-width: 700px;
   padding: 20px;
-  border-left: 3px solid black;
+  color: $text-color;
+  border-left: 3px solid $highlight-color;
   .swiper-wrapper {
     padding: 2em 0px;
     .swiper-slide {
@@ -129,8 +134,9 @@ button {
         max-height: 100%;
       }
     }
-    .subtitle {
-      font-size: 1.5em;
+    .title {
+      font-weight: bold;
+      padding-top: 4px;
     }
   }
   .swiper-pagination {
@@ -143,7 +149,7 @@ button {
   position: absolute;
   width: 60px;
   height: 0;
-  border-top: 3px solid black;
+  border-top: 3px solid $highlight-color;
 }
 
 #marker {
@@ -151,5 +157,6 @@ button {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 5px dashed black;
+  border: 5px dashed $highlight-color;
+  background-color: rgba(255, 255, 255, 0.5);
 }

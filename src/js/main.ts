@@ -140,7 +140,7 @@ function openSlider(images, callback) {
   // @ts-ignore
   const slides = images.map(image => {
     return `<div class="swiper-slide"><img src="${image.attributes.url}">
-        <div class="subtitle">${image.attributes.title} - ${image.attributes.year}</div></div>`;
+        <div class="title">${image.attributes.title} - ${image.attributes.year}</div></div>`;
   });
   swiper.appendSlide(slides);
   swiper.slideTo(0);
@@ -170,10 +170,7 @@ function switchToMap() {
   introElement.style.opacity = "0";
   introElement.style.display = "none";
 
-  titleElement.style.display = "inherit";
-  window.setTimeout(() => {
-    titleElement.style.opacity = "1";
-  });
+  titleElement.style.opacity = "1";
 }
 
 function switchToIntro() {
@@ -183,14 +180,12 @@ function switchToIntro() {
     hideMarkers();
   }
   menuElement.style.width = "100%";
-
-  titleElement.style.display = "none";
   titleElement.style.opacity = "0";
 
-  introElement.style.display = "inherit";
   window.setTimeout(() => {
+    introElement.style.display = "inherit";
     introElement.style.opacity = "1";
-  });
+  }, 2000);
 }
 
 titleElement.addEventListener("click", switchToIntro);
