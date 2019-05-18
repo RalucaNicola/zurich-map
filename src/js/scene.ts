@@ -2,13 +2,14 @@ import WebScene = require("esri/WebScene");
 import SceneView = require("esri/views/SceneView");
 import FeatureLayer = require("esri/layers/FeatureLayer");
 import { SimpleRenderer } from "esri/renderers";
-import { PointSymbol3D, IconSymbol3DLayer } from "esri/symbols";
+import { PointSymbol3D, IconSymbol3DLayer, TextSymbol3DLayer, LabelSymbol3D } from "esri/symbols";
 import LineCallout3D = require("esri/symbols/callouts/LineCallout3D");
 import Color = require("esri/Color");
 import QueryTask = require("esri/tasks/QueryTask");
 import Query = require("esri/tasks/support/Query");
 import watchUtils = require("esri/core/watchUtils");
 import { State } from "./types";
+import LabelClass = require("esri/layers/support/LabelClass");
 
 function initializeScene(state: State) {
   const map = new WebScene({
@@ -19,7 +20,7 @@ function initializeScene(state: State) {
 
   const poiLayer = new FeatureLayer({
     url:
-      "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/Zurich_Images_gdb/FeatureServer/0",
+      "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/zurichPointsOfInterest/FeatureServer/0",
     renderer: new SimpleRenderer({
       symbol: new PointSymbol3D({
         symbolLayers: [
@@ -46,7 +47,32 @@ function initializeScene(state: State) {
     outFields: ["id"],
     elevationInfo: {
       mode: "relative-to-scene"
-    }
+    },
+    featureReduction: {
+      type: "selection"
+    },
+    labelingInfo: [
+      new LabelClass({
+        labelExpressionInfo: { expression: "$feature.title"},
+        symbol: new LabelSymbol3D({
+          symbolLayers: [new TextSymbol3DLayer ({
+          material: {
+            color: "white"
+          },
+          halo: {
+            size: 1,
+            color: "black"
+          },
+          font: {
+            size: 13,
+            family: "Merriweather",
+            weight: "bold"
+          }
+        })]
+      }),
+      where: "label = 1"
+    })
+    ]
   });
 
   map.add(poiLayer);

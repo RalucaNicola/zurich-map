@@ -57,14 +57,13 @@ function addImages(images: Images) {
         <div class="title">${image.attributes.title} - ${image.attributes.year}</div></div>`;
   });
   swiper.appendSlide(slides);
-  swiper.update();
-  //swiper.slideTo(0);
+  swiper.slideTo(0);
 }
 
 function addMarker(screenPoint: ScreenPoint) {
   marker.style.display = "inherit";
-  const top = screenPoint.y - 32;
-  const left = screenPoint.x - 32;
+  const top = screenPoint.y - 22;
+  const left = screenPoint.x - 22;
   marker.style.top = top.toString() + "px";
   marker.style.left = left.toString() + "px";
 }
@@ -76,7 +75,7 @@ function removeMarker() {
 function addCallout(screenPoint: ScreenPoint) {
   callout.style.visibility = "visible";
   callout.classList.add("width-transition");
-  const left = screenPoint.x + 32;
+  const left = screenPoint.x + 22;
   const top = screenPoint.y;
   callout.style.top = top.toString() + "px";
   callout.style.left = left.toString() + "px";
