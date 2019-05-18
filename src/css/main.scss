@@ -31,7 +31,6 @@ canvas {
   width: 100%;
   height: 100%;
   padding: 0;
-  transition: width 2s;
   background-color: $background-color;
   box-sizing: border-box;
   font-size: $font-size-large;
@@ -92,6 +91,11 @@ canvas {
   transition: opacity 2s linear;
 }
 
+.width-transition {
+  transition: width 2s;
+}
+
+
 @keyframes change-color {
   0%, 100% {
     color: $highlight-color;
@@ -124,7 +128,7 @@ button {
   right: 20px;
   top: 0;
   bottom: 0;
-  background-color: $background-color;
+  background-color: white;
   max-width: 700px;
   padding: 20px;
   color: $text-color;
@@ -148,9 +152,8 @@ button {
 }
 
 #callout {
-  display: none;
   position: absolute;
-  width: 60px;
+  width: 0;
   height: 0;
   border-top: 3px solid $text-color;
 }

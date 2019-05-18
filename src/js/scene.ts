@@ -76,32 +76,34 @@ function initializeScene(state: State) {
       if (result && result.graphic) {
         const graphic = result.graphic;
         const id = graphic.attributes.id;
+        if (state.sliderIsOpen) {
+          state.cleanUp = true;
+        }
+        else {
+          state.sliderIsOpen = true;
+        }
+        view.goTo(graphic)
+          .then(function(){
+            state.currentPoi = view.toScreen(result.mapPoint);
+          });
+
         const matchTableQuery = new Query({
           where: "feature_id = " + id.toString(),
           outFields: ["*"]
         });
-        queryTask
-          .execute(matchTableQuery)
-          .then(response => {
-            view
-              .goTo(graphic)
-              .then(_ => {
-                state.currentId = id;
-                state.currentPoi = view.toScreen(result.mapPoint);
-                state.images = response.features;
-                state.sliderIsOpen = true;
 
-                watchUtils.whenTrueOnce(view, "interacting", _ => {
-                  state.sliderIsOpen = false;
-                  state.currentId = null;
-                });
-              })
-              .catch(console.error);
-          })
-          .catch(console.error);
+        queryTask.execute(matchTableQuery)
+          .then(function(queryResult) {
+            state.images = queryResult.features;
+            state.imagesChanged = true;
+            watchUtils.whenTrueOnce(view, "interacting", _ => {
+              state.sliderIsOpen = false;
+              state.cleanUp = true;
+            });
+          });
       } else {
         state.sliderIsOpen = false;
-        state.currentId = null;
+        state.cleanUp = true;
       }
     });
   });

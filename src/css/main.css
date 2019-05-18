@@ -25,7 +25,6 @@ canvas {
   width: 100%;
   height: 100%;
   padding: 0;
-  transition: width 2s;
   background-color: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
   font-size: 1.2em;
@@ -79,6 +78,10 @@ canvas {
   transition: opacity 2s linear;
 }
 
+.width-transition {
+  transition: width 2s;
+}
+
 @keyframes change-color {
   0%, 100% {
     color: #d54e2f;
@@ -109,7 +112,7 @@ button:hover {
   right: 20px;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white;
   max-width: 700px;
   padding: 20px;
   color: #423c3c;
@@ -133,9 +136,8 @@ button:hover {
 }
 
 #callout {
-  display: none;
   position: absolute;
-  width: 60px;
+  width: 0;
   height: 0;
   border-top: 3px solid #423c3c;
 }

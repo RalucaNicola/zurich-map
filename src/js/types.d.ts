@@ -23,6 +23,7 @@ export interface State extends Accessor {
   sliderIsOpen: boolean;
   currentPoi: ScreenPoint;
   device: Device;
-  currentId: number;
-  images: Images
+  images: Images;
+  imagesChanged: boolean;
+  cleanUp: boolean;
 }

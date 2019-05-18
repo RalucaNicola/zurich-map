@@ -1,4 +1,4 @@
-import { State, ScreenPoint } from "./types";
+import { State, ScreenPoint, Images } from "./types";
 
 
 
@@ -17,41 +17,49 @@ function initializeUI(state: State) {
 
   initializeSwiper();
 
-  state.watch("sliderIsOpen", (value) => {
-    if (!value) {
-      closeSlider();
+  state.watch("cleanUp", (value) => {
+    if (value) {
       removeMarker();
       removeCallout();
+      swiper.removeAllSlides();
+      state.imagesChanged = false;
+      state.cleanUp = false;
     }
   });
 
-  state.watch("currentId", function(value) {
+  state.watch("sliderIsOpen", (value) => {
     if (value) {
-      addMarker(state.currentPoi);
-      openSlider(state);
+      swiper.el.style.display = "inherit";
+    }
+    else {
+      swiper.el.style.display = "none";
     }
   });
+
+  state.watch("currentPoi", value => {
+    if (value) {
+      addMarker(value);
+      addCallout(value);
+    }
+  });
+
+  state.watch("imagesChanged", value => {
+    if (value) {
+      addImages(state.images);
+    }
+  });
+
 }
 
-function openSlider(state: State) {
-  swiper.removeAllSlides();
-  swiper.el.style.display = "inherit";
-  const slides = state.images.map(image => {
+function addImages(images: Images) {
+  const slides = images.map(image => {
     return `<div class="swiper-slide"><img src="${image.attributes.url}">
         <div class="title">${image.attributes.title} - ${image.attributes.year}</div></div>`;
   });
   swiper.appendSlide(slides);
-  swiper.slideTo(0);
-  window.setTimeout(function() {
-    const swiperWidth = swiper.el.clientWidth + 23;
-    addCallout(state.currentPoi, swiperWidth);
-  }, 500);
+  swiper.update();
+  //swiper.slideTo(0);
 }
-
-function closeSlider() {
-  swiper.removeAllSlides();
-  swiper.el.style.display = "none";
-};
 
 function addMarker(screenPoint: ScreenPoint) {
   marker.style.display = "inherit";
@@ -65,18 +73,21 @@ function removeMarker() {
   marker.style.display = "none";
 };
 
-function addCallout(screenPoint: ScreenPoint, swiperWidth: number) {
+function addCallout(screenPoint: ScreenPoint) {
+  callout.style.visibility = "visible";
+  callout.classList.add("width-transition");
   const left = screenPoint.x + 32;
   const top = screenPoint.y;
-  callout.style.display = "inherit";
   callout.style.top = top.toString() + "px";
   callout.style.left = left.toString() + "px";
-  const width = window.innerWidth - swiperWidth - left;
+  const width = window.innerWidth - left - 23;
   callout.style.width = width.toString() + "px";
 }
 
 function removeCallout() {
-  callout.style.display = "none";
+  callout.style.visibility = "hidden";
+  callout.classList.remove("width-transition");
+  callout.style.width = "0";
 }
 
 function switchToMap() {
@@ -110,7 +121,8 @@ function initializeSwiper() {
       el: ".swiper-pagination",
       clickable: true
     },
-    mousewheel: true
+    mousewheel: true,
+    keyboard: true
   });
 }
 

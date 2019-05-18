@@ -15,8 +15,11 @@ export default class State extends declared(Accessor) {
   currentPoi: ScreenPoint = null;
 
   @property()
-  currentId: number = null;
+  images: Images = null;
 
   @property()
-  images: Images = null;
+  imagesChanged: boolean = false;
+
+  @property()
+  cleanUp: boolean = null;
 }
