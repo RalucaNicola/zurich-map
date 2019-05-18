@@ -8,7 +8,7 @@ import Color = require("esri/Color");
 import QueryTask = require("esri/tasks/QueryTask");
 import Query = require("esri/tasks/support/Query");
 import watchUtils = require("esri/core/watchUtils");
-import { State } from "./types";
+import { State, Image } from "./types";
 import LabelClass = require("esri/layers/support/LabelClass");
 
 function initializeScene(state: State) {
@@ -96,6 +96,12 @@ function initializeScene(state: State) {
       "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/Zurich_Images_gdb/FeatureServer/1"
   });
 
+  function compareYear(feature1: Image, feature2: Image) {
+    const year1 = Number(feature1.attributes.year) || 0;
+    const year2 = Number(feature2.attributes.year) || 0;
+    return year1 - year2;
+  }
+
   view.on("click", event => {
     view.hitTest(event, { include: [poiLayer] }).then(response => {
       const result = response.results[0];
@@ -120,7 +126,8 @@ function initializeScene(state: State) {
 
         queryTask.execute(matchTableQuery)
           .then(function(queryResult) {
-            state.images = queryResult.features;
+            const images = queryResult.features.sort(compareYear);
+            state.images = images;
             state.imagesChanged = true;
             watchUtils.whenTrueOnce(view, "interacting", _ => {
               state.sliderIsOpen = false;
