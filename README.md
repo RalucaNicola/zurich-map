@@ -1,6 +1,6 @@
-# Template App
+# Old Zurich in Photos
 
-> TypeScript with the [ArcGIS API 4 for JavaScript](https://developers.arcgis.com/javascript/)
+![oldzueri.PNG](./src/assets/oldzurich.png)
 
 ## Usage
 
