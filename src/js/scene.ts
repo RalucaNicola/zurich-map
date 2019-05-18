@@ -84,6 +84,12 @@ function initializeScene(state: State) {
     ui: {
       components: []
     },
+    constraints: {
+      altitude: {
+        max: 4000,
+        min: 300
+      }
+    },
     padding: {
       right: 500
     }
