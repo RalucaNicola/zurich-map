@@ -14,10 +14,6 @@ body {
   background-image: url("../assets/custom-background.jpg");
 }
 
-canvas {
-  opacity: 0.9;
-}
-
 .menu {
   position: absolute;
   top: 0;
