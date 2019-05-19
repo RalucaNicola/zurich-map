@@ -200,6 +200,10 @@ button:hover {
     margin-top: 0;
   }
 
+  #title h1 {
+    font-size: 1em;
+  }
+
   #callout {
     border-left: 3px solid #423c3c;
     border-top: none;

@@ -221,6 +221,12 @@ button {
     }
   }
 
+  #title {
+    h1 {
+      font-size: 1em;
+    }
+  }
+
   #callout {
     border-left: 3px solid $text-color;
     border-top: none;
