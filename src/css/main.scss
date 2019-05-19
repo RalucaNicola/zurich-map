@@ -120,7 +120,6 @@ button {
   top: 0;
   bottom: 0;
   background-color: white;
-  max-width: 700px;
   padding: 20px;
   color: $text-color;
   border-left: 3px solid $text-color;
@@ -176,9 +175,14 @@ button {
       margin-top: 2em;
     }
   }
+  .swiper-container {
+    right: 10px;
+    max-width: 700px;
+    padding: 10px;
+  }
 }
 
-@media (min-width: 640px) and (max-width: 1300px) {
+@media (min-width: 700px) and (max-width: 1300px) {
 
   .intro {
     p {
@@ -191,15 +195,20 @@ button {
       margin-top: 1em;
     }
   }
-
   .swiper-container {
     right: 10px;
     max-width: 350px;
     padding: 10px;
+    .swiper-slide>* {
+      max-width: 320px;
+    }
+  }
+  .swiper-container-vertical>.swiper-pagination-bullets {
+    right: 1px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .intro {
     p {
       margin-top: 1em;

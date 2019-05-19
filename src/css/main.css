@@ -104,7 +104,6 @@ button:hover {
   top: 0;
   bottom: 0;
   background-color: white;
-  max-width: 700px;
   padding: 20px;
   color: #423c3c;
   border-left: 3px solid #423c3c;
@@ -159,8 +158,14 @@ button:hover {
   .intro button {
     margin-top: 2em;
   }
+
+  .swiper-container {
+    right: 10px;
+    max-width: 700px;
+    padding: 10px;
+  }
 }
-@media (min-width: 640px) and (max-width: 1300px) {
+@media (min-width: 700px) and (max-width: 1300px) {
   .intro p {
     margin-top: 1.5em;
   }
@@ -176,8 +181,15 @@ button:hover {
     max-width: 350px;
     padding: 10px;
   }
+  .swiper-container .swiper-slide > * {
+    max-width: 320px;
+  }
+
+  .swiper-container-vertical > .swiper-pagination-bullets {
+    right: 1px;
+  }
 }
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .intro p {
     margin-top: 1em;
   }
