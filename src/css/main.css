@@ -23,7 +23,6 @@ body {
   padding: 0;
   background-color: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
-  font-size: 1.2em;
 }
 .menu .menu-title {
   margin: 2em 0;
@@ -43,10 +42,10 @@ body {
 .intro {
   max-width: 700px;
   margin: 0 auto;
+  padding: 0 1em;
   text-align: center;
 }
 .intro .front-image {
-  max-width: 300px;
   box-shadow: 5px 5px 10px #646464;
 }
 .intro #image-left {
@@ -55,12 +54,8 @@ body {
 .intro #image-right {
   transform: rotate(10deg);
 }
-.intro button {
-  margin-top: 2em;
-}
 .intro p {
   line-height: 1.7em;
-  margin-top: 4em;
 }
 .intro a {
   color: #d54e2f;
@@ -145,6 +140,53 @@ button:hover {
   height: 40px;
   border: 5px dashed #423c3c;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 1300px) {
+  .menu {
+    font-size: 1.2em;
+  }
+  .menu .menu-title {
+    margin: 2em 0;
+  }
+
+  .intro p {
+    margin-top: 4em;
+  }
+  .intro .front-image {
+    max-width: 300px;
+  }
+  .intro button {
+    margin-top: 2em;
+  }
+}
+@media (min-width: 640px) and (max-width: 1300px) {
+  .intro p {
+    margin-top: 1.5em;
+  }
+  .intro .front-image {
+    max-width: 200px;
+  }
+  .intro button {
+    margin-top: 1em;
+  }
+
+  .swiper-container {
+    right: 10px;
+    max-width: 350px;
+    padding: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .intro p {
+    margin-top: 1em;
+  }
+  .intro .front-image {
+    max-width: 150px;
+  }
+  .intro button {
+    margin-top: 0;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -30,7 +30,6 @@ body {
   padding: 0;
   background-color: $background-color;
   box-sizing: border-box;
-  font-size: $font-size-large;
   .menu-title {
     margin: 2em 0;
     font-weight: 700;
@@ -50,10 +49,10 @@ body {
 .intro {
   max-width: 700px;
   margin: 0 auto;
+  padding: 0 1em;
   text-align: center;
 
   .front-image {
-    max-width: 300px;
     box-shadow: 5px 5px 10px rgb(100, 100, 100);
   }
 
@@ -65,13 +64,8 @@ body {
     transform: rotate(10deg);
   }
 
-  button {
-    margin-top: 2em;
-  }
-
   p {
     line-height: 1.7em;
-    margin-top: 4em;
   }
 
   a {
@@ -162,4 +156,59 @@ button {
   height: 40px;
   border: 5px dashed $text-color;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 1300px) {
+  .menu {
+    font-size: $font-size-large;
+    .menu-title {
+      margin: 2em 0;
+    }
+  }
+  .intro {
+    p {
+      margin-top: 4em;
+    }
+    .front-image {
+      max-width: 300px;
+    }
+    button {
+      margin-top: 2em;
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1300px) {
+
+  .intro {
+    p {
+      margin-top: 1.5em;
+    }
+    .front-image {
+      max-width: 200px;
+    }
+    button {
+      margin-top: 1em;
+    }
+  }
+
+  .swiper-container {
+    right: 10px;
+    max-width: 350px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro {
+    p {
+      margin-top: 1em;
+    }
+    .front-image {
+      max-width: 150px;
+    }
+    button {
+      margin-top: 0;
+    }
+  }
 }
