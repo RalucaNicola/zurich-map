@@ -51,6 +51,7 @@ function initializeScene(state: State) {
     featureReduction: {
       type: "selection"
     },
+    screenSizePerspectiveEnabled: false,
     labelingInfo: [
       new LabelClass({
         labelExpressionInfo: { expression: "$feature.title"},
@@ -64,7 +65,7 @@ function initializeScene(state: State) {
             color: "black"
           },
           font: {
-            size: 13,
+            size: 11,
             family: "Merriweather",
             weight: "bold"
           }

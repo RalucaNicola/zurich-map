@@ -38,6 +38,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
             featureReduction: {
                 type: "selection"
             },
+            screenSizePerspectiveEnabled: false,
             labelingInfo: [
                 new LabelClass({
                     labelExpressionInfo: { expression: "$feature.title" },
@@ -51,7 +52,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                                     color: "black"
                                 },
                                 font: {
-                                    size: 13,
+                                    size: 11,
                                     family: "Merriweather",
                                     weight: "bold"
                                 }
@@ -71,8 +72,8 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
             },
             constraints: {
                 altitude: {
-                    max: 2000,
-                    min: 500
+                    max: 4000,
+                    min: 300
                 }
             },
             padding: {
