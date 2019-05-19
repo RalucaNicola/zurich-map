@@ -15,12 +15,16 @@ function initializeUI(state: State) {
   titleElement.addEventListener("click", _ => { switchToIntro(state) });
   exploreBtn.addEventListener("click", switchToMap);
 
-  initializeSwiper();
+  initializeSwiper(state.smallViewport);
 
   state.watch("cleanUp", (value) => {
     if (value) {
       removeMarker();
-      removeCallout();
+      if (state.smallViewport) {
+        removeCalloutSmallViewport();
+      } else {
+        removeCallout();
+      }
       swiper.removeAllSlides();
       state.imagesChanged = false;
       state.cleanUp = false;
@@ -39,7 +43,11 @@ function initializeUI(state: State) {
   state.watch("currentPoi", value => {
     if (value) {
       addMarker(value);
-      addCallout(value);
+      if (state.smallViewport) {
+        addCalloutSmallViewport(value);
+      } else {
+        addCallout(value);
+      }
     }
   });
 
@@ -89,6 +97,23 @@ function removeCallout() {
   callout.style.width = "0";
 }
 
+function addCalloutSmallViewport(screenPoint: ScreenPoint) {
+  callout.style.visibility = "visible";
+  callout.classList.add("height-transition");
+  const left = screenPoint.x;
+  const top = screenPoint.y + 22;
+  callout.style.top = top.toString() + "px";
+  callout.style.left = left.toString() + "px";
+  const height = window.innerHeight - 300 - top;
+  callout.style.height = height.toString() + "px";
+}
+
+function removeCalloutSmallViewport() {
+  callout.style.visibility = "hidden";
+  callout.classList.remove("height-transition");
+  callout.style.height = "0";
+}
+
 function switchToMap() {
   menuElement.style.width = "0";
 
@@ -112,9 +137,9 @@ function switchToIntro(state: State) {
   }, 2000);
 }
 
-function initializeSwiper() {
-  //@ts-ignore
-  swiper = new Swiper(".swiper-container", {
+function initializeSwiper(smallViewport: boolean) {
+
+  const options = {
     centeredSlides: true,
     spaceBetween: 50,
     nested: true,
@@ -126,7 +151,14 @@ function initializeSwiper() {
     },
     mousewheel: true,
     keyboard: true
-  });
+  }
+
+  if (smallViewport) {
+    options.slidesPerView = 1;
+    options.direction = "horizontal";
+  }
+  //@ts-ignore
+  swiper = new Swiper(".swiper-container", options);
 }
 
 export default initializeUI;

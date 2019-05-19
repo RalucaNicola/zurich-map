@@ -51,7 +51,6 @@ function initializeScene(state: State) {
     featureReduction: {
       type: "selection"
     },
-    screenSizePerspectiveEnabled: false,
     labelingInfo: [
       new LabelClass({
         labelExpressionInfo: { expression: "$feature.title"},
@@ -78,6 +77,8 @@ function initializeScene(state: State) {
 
   map.add(poiLayer);
 
+  const mapPadding = state.smallViewport ? { bottom: 300 } : { right: 500 };
+
   const view = new SceneView({
     map: map,
     container: "view",
@@ -91,9 +92,7 @@ function initializeScene(state: State) {
         min: 300
       }
     },
-    padding: {
-      right: 500
-    }
+    padding: mapPadding
   });
 
   (window as any).view = view;

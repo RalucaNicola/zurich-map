@@ -5,19 +5,28 @@ define(["require", "exports", "esri/core/Accessor", "esri/core/accessorSupport/d
         function State() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this.sliderIsOpen = false;
-            _this.device = null;
+            _this.smallViewport = _this.hasSmallViewport();
             _this.currentPoi = null;
             _this.images = null;
             _this.imagesChanged = false;
             _this.cleanUp = null;
             return _this;
         }
+        State.prototype.hasSmallViewport = function () {
+            var mediaQuery = window.matchMedia("(max-width: 700px)");
+            if (mediaQuery.matches) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        };
         __decorate([
             decorators_1.property()
         ], State.prototype, "sliderIsOpen", void 0);
         __decorate([
-            decorators_1.property()
-        ], State.prototype, "device", void 0);
+            decorators_1.property({ readOnly: true })
+        ], State.prototype, "smallViewport", void 0);
         __decorate([
             decorators_1.property()
         ], State.prototype, "currentPoi", void 0);

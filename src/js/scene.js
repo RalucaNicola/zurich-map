@@ -38,7 +38,6 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
             featureReduction: {
                 type: "selection"
             },
-            screenSizePerspectiveEnabled: false,
             labelingInfo: [
                 new LabelClass({
                     labelExpressionInfo: { expression: "$feature.title" },
@@ -63,6 +62,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
             ]
         });
         map.add(poiLayer);
+        var mapPadding = state.smallViewport ? { bottom: 300 } : { right: 500 };
         var view = new SceneView({
             map: map,
             container: "view",
@@ -76,9 +76,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                     min: 300
                 }
             },
-            padding: {
-                right: 500
-            }
+            padding: mapPadding
         });
         window.view = view;
         var queryTask = new QueryTask({

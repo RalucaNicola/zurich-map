@@ -10,11 +10,16 @@ define(["require", "exports"], function (require, exports) {
     function initializeUI(state) {
         titleElement.addEventListener("click", function (_) { switchToIntro(state); });
         exploreBtn.addEventListener("click", switchToMap);
-        initializeSwiper();
+        initializeSwiper(state.smallViewport);
         state.watch("cleanUp", function (value) {
             if (value) {
                 removeMarker();
-                removeCallout();
+                if (state.smallViewport) {
+                    removeCalloutSmallViewport();
+                }
+                else {
+                    removeCallout();
+                }
                 swiper.removeAllSlides();
                 state.imagesChanged = false;
                 state.cleanUp = false;
@@ -31,7 +36,12 @@ define(["require", "exports"], function (require, exports) {
         state.watch("currentPoi", function (value) {
             if (value) {
                 addMarker(value);
-                addCallout(value);
+                if (state.smallViewport) {
+                    addCalloutSmallViewport(value);
+                }
+                else {
+                    addCallout(value);
+                }
             }
         });
         state.watch("imagesChanged", function (value) {
@@ -73,6 +83,21 @@ define(["require", "exports"], function (require, exports) {
         callout.classList.remove("width-transition");
         callout.style.width = "0";
     }
+    function addCalloutSmallViewport(screenPoint) {
+        callout.style.visibility = "visible";
+        callout.classList.add("height-transition");
+        var left = screenPoint.x;
+        var top = screenPoint.y + 22;
+        callout.style.top = top.toString() + "px";
+        callout.style.left = left.toString() + "px";
+        var height = window.innerHeight - 300 - top;
+        callout.style.height = height.toString() + "px";
+    }
+    function removeCalloutSmallViewport() {
+        callout.style.visibility = "hidden";
+        callout.classList.remove("height-transition");
+        callout.style.height = "0";
+    }
     function switchToMap() {
         menuElement.style.width = "0";
         introElement.style.opacity = "0";
@@ -91,9 +116,8 @@ define(["require", "exports"], function (require, exports) {
             introElement.style.opacity = "1";
         }, 2000);
     }
-    function initializeSwiper() {
-        //@ts-ignore
-        swiper = new Swiper(".swiper-container", {
+    function initializeSwiper(smallViewport) {
+        var options = {
             centeredSlides: true,
             spaceBetween: 50,
             nested: true,
@@ -105,7 +129,13 @@ define(["require", "exports"], function (require, exports) {
             },
             mousewheel: true,
             keyboard: true
-        });
+        };
+        if (smallViewport) {
+            options.slidesPerView = 1;
+            options.direction = "horizontal";
+        }
+        //@ts-ignore
+        swiper = new Swiper(".swiper-container", options);
     }
     exports.default = initializeUI;
 });

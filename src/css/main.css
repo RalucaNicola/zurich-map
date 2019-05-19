@@ -199,6 +199,27 @@ button:hover {
   .intro button {
     margin-top: 0;
   }
+
+  #callout {
+    border-left: 3px solid #423c3c;
+    border-top: none;
+  }
+
+  .swiper-container {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    color: #423c3c;
+    border-left: none;
+    border-top: 3px solid #423c3c;
+    max-height: 300;
+  }
+  .swiper-container .swiper-slide > * {
+    max-width: 320px;
+    max-height: 300px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
