@@ -12,7 +12,7 @@ const callout = document.getElementById("callout");
 let swiper: any = null;
 
 function initializeUI(state: State) {
-  titleElement.addEventListener("click", switchToIntro);
+  titleElement.addEventListener("click", _ => { switchToIntro(state) });
   exploreBtn.addEventListener("click", switchToMap);
 
   initializeSwiper();
@@ -98,9 +98,13 @@ function switchToMap() {
   titleElement.style.opacity = "1";
 }
 
-function switchToIntro() {
+function switchToIntro(state: State) {
   menuElement.style.width = "100%";
   titleElement.style.opacity = "0";
+  if (state.sliderIsOpen) {
+    state.cleanUp = true;
+    state.sliderIsOpen = false;
+  }
 
   window.setTimeout(() => {
     introElement.style.display = "inherit";

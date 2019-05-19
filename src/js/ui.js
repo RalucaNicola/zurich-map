@@ -8,7 +8,7 @@ define(["require", "exports"], function (require, exports) {
     var callout = document.getElementById("callout");
     var swiper = null;
     function initializeUI(state) {
-        titleElement.addEventListener("click", switchToIntro);
+        titleElement.addEventListener("click", function (_) { switchToIntro(state); });
         exploreBtn.addEventListener("click", switchToMap);
         initializeSwiper();
         state.watch("cleanUp", function (value) {
@@ -79,9 +79,13 @@ define(["require", "exports"], function (require, exports) {
         introElement.style.display = "none";
         titleElement.style.opacity = "1";
     }
-    function switchToIntro() {
+    function switchToIntro(state) {
         menuElement.style.width = "100%";
         titleElement.style.opacity = "0";
+        if (state.sliderIsOpen) {
+            state.cleanUp = true;
+            state.sliderIsOpen = false;
+        }
         window.setTimeout(function () {
             introElement.style.display = "inherit";
             introElement.style.opacity = "1";
