@@ -1,7 +1,5 @@
 import { State, ScreenPoint, Images } from "./types";
 
-
-
 const menuElement = document.getElementsByClassName("menu")[0] as HTMLElement;
 const introElement = document.getElementsByClassName("intro")[0] as HTMLElement;
 const titleElement = document.getElementById("title") as HTMLElement;
@@ -12,12 +10,14 @@ const callout = document.getElementById("callout");
 let swiper: any = null;
 
 function initializeUI(state: State) {
-  titleElement.addEventListener("click", _ => { switchToIntro(state) });
+  titleElement.addEventListener("click", _ => {
+    switchToIntro(state);
+  });
   exploreBtn.addEventListener("click", switchToMap);
 
   initializeSwiper(state.smallViewport);
 
-  state.watch("cleanUp", (value) => {
+  state.watch("cleanUp", value => {
     if (value) {
       removeMarker();
       if (state.smallViewport) {
@@ -31,11 +31,10 @@ function initializeUI(state: State) {
     }
   });
 
-  state.watch("sliderIsOpen", (value) => {
+  state.watch("sliderIsOpen", value => {
     if (value) {
       swiper.el.style.display = "inherit";
-    }
-    else {
+    } else {
       swiper.el.style.display = "none";
     }
   });
@@ -56,13 +55,14 @@ function initializeUI(state: State) {
       addImages(state.images);
     }
   });
-
 }
 
 function addImages(images: Images) {
   const slides = images.map(image => {
     return `<div class="swiper-slide"><img src="${image.attributes.url}">
-        <div class="title">${image.attributes.title} - ${image.attributes.year}</div></div>`;
+        <div class="title">${image.attributes.title} - ${
+      image.attributes.year
+    }</div></div>`;
   });
   swiper.appendSlide(slides);
   swiper.slideTo(0);
@@ -78,7 +78,7 @@ function addMarker(screenPoint: ScreenPoint) {
 
 function removeMarker() {
   marker.style.display = "none";
-};
+}
 
 function addCallout(screenPoint: ScreenPoint) {
   callout.style.visibility = "visible";
@@ -132,13 +132,12 @@ function switchToIntro(state: State) {
   }
 
   window.setTimeout(() => {
-    introElement.style.display = "inherit";
+    introElement.style.display = "flex";
     introElement.style.opacity = "1";
   }, 2000);
 }
 
 function initializeSwiper(smallViewport: boolean) {
-
   const options = {
     centeredSlides: true,
     spaceBetween: 50,
@@ -151,7 +150,7 @@ function initializeSwiper(smallViewport: boolean) {
     },
     mousewheel: true,
     keyboard: true
-  }
+  };
 
   if (smallViewport) {
     options.slidesPerView = 1;

@@ -44,6 +44,12 @@ body {
   margin: 0 auto;
   padding: 0 1em;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.intro .intro-description {
+  flex: 1;
 }
 .intro .front-image {
   box-shadow: 5px 5px 10px #646464;
@@ -63,6 +69,10 @@ body {
 }
 .intro a:hover {
   animation: change-color 2s infinite;
+}
+.intro footer {
+  font-size: 0.6em;
+  padding-bottom: 1em;
 }
 
 .opacity-transition {
@@ -198,6 +208,9 @@ button:hover {
   }
   .intro button {
     margin-top: 0;
+  }
+  .intro footer {
+    padding-top: 0.5em;
   }
 
   #title h1 {

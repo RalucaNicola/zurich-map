@@ -8,7 +8,9 @@ define(["require", "exports"], function (require, exports) {
     var callout = document.getElementById("callout");
     var swiper = null;
     function initializeUI(state) {
-        titleElement.addEventListener("click", function (_) { switchToIntro(state); });
+        titleElement.addEventListener("click", function (_) {
+            switchToIntro(state);
+        });
         exploreBtn.addEventListener("click", switchToMap);
         initializeSwiper(state.smallViewport);
         state.watch("cleanUp", function (value) {
@@ -67,7 +69,6 @@ define(["require", "exports"], function (require, exports) {
     function removeMarker() {
         marker.style.display = "none";
     }
-    ;
     function addCallout(screenPoint) {
         callout.style.visibility = "visible";
         callout.classList.add("width-transition");
@@ -112,7 +113,7 @@ define(["require", "exports"], function (require, exports) {
             state.sliderIsOpen = false;
         }
         window.setTimeout(function () {
-            introElement.style.display = "inherit";
+            introElement.style.display = "flex";
             introElement.style.opacity = "1";
         }, 2000);
     }
