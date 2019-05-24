@@ -42,7 +42,8 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                 new LabelClass({
                     labelExpressionInfo: { expression: "$feature.title" },
                     symbol: new symbols_1.LabelSymbol3D({
-                        symbolLayers: [new symbols_1.TextSymbol3DLayer({
+                        symbolLayers: [
+                            new symbols_1.TextSymbol3DLayer({
                                 material: {
                                     color: "white"
                                 },
@@ -55,7 +56,8 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                                     family: "Merriweather",
                                     weight: "bold"
                                 }
-                            })]
+                            })
+                        ]
                     }),
                     where: "label = 1"
                 })
@@ -70,6 +72,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
             ui: {
                 components: []
             },
+            qualityProfile: "high",
             constraints: {
                 altitude: {
                     max: 4000,
@@ -99,16 +102,14 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                     else {
                         state.sliderIsOpen = true;
                     }
-                    view.goTo(graphic)
-                        .then(function () {
+                    view.goTo(graphic).then(function () {
                         state.currentPoi = view.toScreen(result.mapPoint);
                     });
                     var matchTableQuery = new Query({
                         where: "feature_id = " + id.toString(),
                         outFields: ["*"]
                     });
-                    queryTask.execute(matchTableQuery)
-                        .then(function (queryResult) {
+                    queryTask.execute(matchTableQuery).then(function (queryResult) {
                         var images = queryResult.features.sort(compareYear);
                         state.images = images;
                         state.imagesChanged = true;

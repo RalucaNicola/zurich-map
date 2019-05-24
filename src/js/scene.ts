@@ -2,7 +2,12 @@ import WebScene = require("esri/WebScene");
 import SceneView = require("esri/views/SceneView");
 import FeatureLayer = require("esri/layers/FeatureLayer");
 import { SimpleRenderer } from "esri/renderers";
-import { PointSymbol3D, IconSymbol3DLayer, TextSymbol3DLayer, LabelSymbol3D } from "esri/symbols";
+import {
+  PointSymbol3D,
+  IconSymbol3DLayer,
+  TextSymbol3DLayer,
+  LabelSymbol3D
+} from "esri/symbols";
 import LineCallout3D = require("esri/symbols/callouts/LineCallout3D");
 import Color = require("esri/Color");
 import QueryTask = require("esri/tasks/QueryTask");
@@ -53,25 +58,27 @@ function initializeScene(state: State) {
     },
     labelingInfo: [
       new LabelClass({
-        labelExpressionInfo: { expression: "$feature.title"},
+        labelExpressionInfo: { expression: "$feature.title" },
         symbol: new LabelSymbol3D({
-          symbolLayers: [new TextSymbol3DLayer ({
-          material: {
-            color: "white"
-          },
-          halo: {
-            size: 1,
-            color: "black"
-          },
-          font: {
-            size: 11,
-            family: "Merriweather",
-            weight: "bold"
-          }
-        })]
-      }),
-      where: "label = 1"
-    })
+          symbolLayers: [
+            new TextSymbol3DLayer({
+              material: {
+                color: "white"
+              },
+              halo: {
+                size: 1,
+                color: "black"
+              },
+              font: {
+                size: 11,
+                family: "Merriweather",
+                weight: "bold"
+              }
+            })
+          ]
+        }),
+        where: "label = 1"
+      })
     ]
   });
 
@@ -86,6 +93,7 @@ function initializeScene(state: State) {
     ui: {
       components: []
     },
+    qualityProfile: "high",
     constraints: {
       altitude: {
         max: 4000,
@@ -116,30 +124,27 @@ function initializeScene(state: State) {
         const id = graphic.attributes.id;
         if (state.sliderIsOpen) {
           state.cleanUp = true;
-        }
-        else {
+        } else {
           state.sliderIsOpen = true;
         }
-        view.goTo(graphic)
-          .then(function(){
-            state.currentPoi = view.toScreen(result.mapPoint);
-          });
+        view.goTo(graphic).then(function() {
+          state.currentPoi = view.toScreen(result.mapPoint);
+        });
 
         const matchTableQuery = new Query({
           where: "feature_id = " + id.toString(),
           outFields: ["*"]
         });
 
-        queryTask.execute(matchTableQuery)
-          .then(function(queryResult) {
-            const images = queryResult.features.sort(compareYear);
-            state.images = images;
-            state.imagesChanged = true;
-            watchUtils.whenTrueOnce(view, "interacting", _ => {
-              state.sliderIsOpen = false;
-              state.cleanUp = true;
-            });
+        queryTask.execute(matchTableQuery).then(function(queryResult) {
+          const images = queryResult.features.sort(compareYear);
+          state.images = images;
+          state.imagesChanged = true;
+          watchUtils.whenTrueOnce(view, "interacting", _ => {
+            state.sliderIsOpen = false;
+            state.cleanUp = true;
           });
+        });
       } else {
         state.sliderIsOpen = false;
         state.cleanUp = true;
