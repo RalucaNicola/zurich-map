@@ -2,7 +2,7 @@
 
 [![oldzueri.PNG](./src/assets/oldzurich.png)](https://ralucanicola.github.io/zurich-map/)
 
-Old Zurich in Photos is a 3D interactive map that where people can explore images of old Zurich. The target audience is basically anybody who is interested in this topic and who wants to see what Zurich looked like in the past.
+Old Zurich in Photos is a 3D interactive map where people can explore old photographs Zurich. The target audience is basically anybody who is interested in this topic and who wants to see what Zurich looked like in the past.
 
 The images are subject to the conditions of use of the source platforms
 where the digital copies are accessible. See the source of each image for more information.
