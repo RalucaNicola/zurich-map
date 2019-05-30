@@ -32,7 +32,7 @@ function initializeScene(state: State) {
           new IconSymbol3DLayer({
             size: 20,
             resource: {
-              href: "./src/assets/camera-retro-solid.svg"
+              href: "./src/assets/camera-retro-solid.png"
             }
           })
         ],
