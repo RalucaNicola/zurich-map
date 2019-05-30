@@ -83,7 +83,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
         });
         window.view = view;
         var queryTask = new QueryTask({
-            url: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/Zurich_Images_gdb/FeatureServer/1"
+            url: "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/ZurichImagesTable/FeatureServer/0"
         });
         function compareYear(feature1, feature2) {
             var year1 = Number(feature1.attributes.year) || 0;

@@ -60,9 +60,8 @@ function initializeUI(state: State) {
 function addImages(images: Images) {
   const slides = images.map(image => {
     return `<div class="swiper-slide"><img src="${image.attributes.url}">
-        <div class="title">${image.attributes.title} - ${
-      image.attributes.year
-    }</div></div>`;
+        <div class="title">${image.attributes.title} - ${image.attributes.year} (<a href="${image.attributes.source}">Source</a>)</div>
+        </div>`;
   });
   swiper.appendSlide(slides);
   swiper.slideTo(0);

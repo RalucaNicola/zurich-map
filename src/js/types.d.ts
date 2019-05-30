@@ -8,7 +8,8 @@ export interface ScreenPoint {
 export interface ImageMetadata {
   title: string,
   year: string,
-  url: string
+  url: string,
+  source: string
 }
 
 export interface Image {

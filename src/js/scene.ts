@@ -107,7 +107,7 @@ function initializeScene(state: State) {
 
   const queryTask = new QueryTask({
     url:
-      "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/Zurich_Images_gdb/FeatureServer/1"
+      "https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/ZurichImagesTable/FeatureServer/0"
   });
 
   function compareYear(feature1: Image, feature2: Image) {
