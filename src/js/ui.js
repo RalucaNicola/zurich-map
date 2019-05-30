@@ -54,7 +54,7 @@ define(["require", "exports"], function (require, exports) {
     }
     function addImages(images) {
         var slides = images.map(function (image) {
-            return "<div class=\"swiper-slide\"><img src=\"" + image.attributes.url + "\">\n        <div class=\"title\">" + image.attributes.title + " - " + image.attributes.year + " (<a href=\"" + image.attributes.source + "\">Source</a>)</div>\n        </div>";
+            return "<div class=\"swiper-slide\"><img src=\"" + image.attributes.url + "\">\n        <div class=\"title\">" + image.attributes.title + " (" + image.attributes.year + ") - <a href=\"" + image.attributes.source + "\" target=\"_blank\">Source</a></div>\n        </div>";
         });
         swiper.appendSlide(slides);
         swiper.slideTo(0);

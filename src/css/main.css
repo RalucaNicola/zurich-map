@@ -127,6 +127,13 @@ button:hover {
 .swiper-container .swiper-wrapper .swiper-slide img {
   max-height: 100%;
 }
+.swiper-container .swiper-wrapper .swiper-slide a {
+  color: #d54e2f;
+  text-decoration: none;
+}
+.swiper-container .swiper-wrapper .swiper-slide a:hover {
+  animation: change-color 2s infinite;
+}
 .swiper-container .swiper-wrapper .title {
   font-weight: bold;
   padding-top: 4px;

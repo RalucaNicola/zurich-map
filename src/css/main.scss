@@ -142,6 +142,13 @@ button {
       img {
         max-height: 100%;
       }
+      a {
+        color: $highlight-color;
+        text-decoration: none;
+      }
+      a:hover {
+        animation: change-color 2s infinite;
+      }
     }
     .title {
       font-weight: bold;
