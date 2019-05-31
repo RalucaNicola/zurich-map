@@ -96,8 +96,8 @@ function initializeScene(state: State) {
     qualityProfile: "high",
     constraints: {
       altitude: {
-        max: 4000,
-        min: 300
+        max: 2000,
+        min: 500
       }
     },
     padding: mapPadding
