@@ -14,7 +14,7 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
                         new symbols_1.IconSymbol3DLayer({
                             size: 20,
                             resource: {
-                                href: "./src/assets/camera-retro-solid.svg"
+                                href: "./src/assets/camera-retro-solid.png"
                             }
                         })
                     ],
