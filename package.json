@@ -17,7 +17,7 @@
   "author": "Raluca Nicola <ralucagnicola@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "tslint": "4.2.0"
+    "tslint": "6.1.3"
   },
   "dependencies": {
     "@types/arcgis-js-api": "4.11.0",
